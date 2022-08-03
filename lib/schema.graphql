@@ -1,0 +1,21 @@
+type Query {
+	getSampleTodoIAM(id: ID!): Product @aws_iam
+	getSampleTodoPublic(id: ID!): Product @aws_api_key
+	getSampleTodo(id: ID!): Product @aws_api_key @aws_cognito_user_pools
+}
+
+type Mutation {
+	createSampleTodo(input: sampleTodoInput): SampleTodo @aws_cognito_user_pools
+}
+
+type SampleTodo {
+	id: ID!
+	name: String!
+	description: String
+}
+
+input sampleTodoInput {
+	id: ID
+	name: String!
+	description: String
+}
